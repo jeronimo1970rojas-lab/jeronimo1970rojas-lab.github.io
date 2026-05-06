@@ -14,12 +14,10 @@
       background: linear-gradient(135deg,#1565c0,#42a5f5);
       height:100vh;
       display:flex;
-      flex-direction:column;
-      justify-content:space-between;
+      justify-content:center;
       align-items:center;
-      padding:20px;
       color:white;
-      text-align:center;
+      font-size:24px;
     }
   </style>
 </head>
@@ -27,32 +25,20 @@
 <body>
 
 <div id="app">
-  <div class="view view-main"></div>
+  <div class="view view-main">
+    <div class="page">
+      <div class="page-content inicio">
+        ✅ APP FUNCIONANDO
+      </div>
+    </div>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/framework7@7/framework7-bundle.min.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-
   var app = new Framework7();
-
-  var mainView = app.views.create('.view-main', {
-    url: '/'
-  });
-
-  // PANTALLA INICIAL
-  mainView.router.navigate({
-    content: `
-    <div class="page no-navbar">
-      <div class="page-content inicio">
-        <h2>PRE PROMO B</h2>
-        <p>Bienvenido</p>
-      </div>
-    </div>
-    `
-  });
-
 });
 </script>
 
