@@ -3,35 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>App Escolar</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/framework7@7/framework7-bundle.min.css">
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1">
 
-  <style>
-    body { margin:0; }
-
-    .pantalla {
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
-      flex-direction:column;
-      text-align:center;
-    }
-
-    .azul {
-      background: linear-gradient(135deg,#1565c0,#42a5f5);
-      color:white;
-    }
-
-    .card {
-      background:white;
-      padding:15px;
-      margin:10px;
-      border-radius:10px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -40,132 +16,7 @@
   <div id="contenido"></div>
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-
-  // URL de tu Apps Script
-  var URL = "https://script.google.com/macros/s/AKfycbzf5up_ixliJAUzBybWzedsDCtyUCHssd7gtpwZVlWbu-TTqu3ViT8xQgIBdwDJXBuc/exec";
-
-  // PANTALLA INICIAL
-  document.getElementById("contenido").innerHTML = `
-    <div class="pantalla azul">
-      <h2>PRE PROMO B</h2>
-      <p>Bienvenido</p>
-    </div>
-  `;
-
-  // CAMBIAR A AVISOS
-  setTimeout(cargarAvisos, 3000);
-
-  function cargarAvisos(){
-    document.getElementById("contenido").innerHTML = `
-  <div style="
-    min-height:100vh;
-    background:#f5f5f5;
-    padding:20px;
-    box-sizing:border-box;
-    padding-bottom:100px;
-  ">
-
-    <h2 style="text-align:center;">
-      Avisos
-    </h2>
-
-    <div id="lista">
-      Cargando...
-    </div>
-
-    <button
-      onclick="irLogin()"
-      style="
-        position:fixed;
-        bottom:20px;
-        left:20px;
-        width:calc(100% - 40px);
-        height:50px;
-        border:none;
-        border-radius:10px;
-        background:#1565c0;
-        color:white;
-        font-size:18px;
-      "
-    >
-      Ingresar
-    </button>
-
-  </div>
-`;
-
-    fetch(URL + "?accion=avisos")
-      .then(r => r.json())
-      .then(data => {
-        let html = "";
-
-        data.forEach(a=>{
-          html += `
-            <div class="card">
-              <b>${a.fecha}</b><br>
-              ${a.mensaje}
-            </div>
-          `;
-        });
-
-        document.getElementById("lista").innerHTML = html;
-      })
-      .catch(()=>{
-        document.getElementById("lista").innerHTML = "Error al cargar";
-      });
-  }
-
-  // LOGIN
-  window.irLogin = function(){
-    document.getElementById("contenido").innerHTML = `
-      <div class="pantalla">
-        <h2>Login</h2>
-        <input id="u" placeholder="Usuario"><br><br>
-        <input id="p" type="password" placeholder="Password"><br><br>
-        <button onclick="login()">Ingresar</button>
-      </div>
-    `;
-  }
-
-  window.login = function(){
-    let u = document.getElementById("u").value;
-    let p = document.getElementById("p").value;
-
-    fetch(URL + "?usuario=" + u + "&password=" + p)
-      .then(r => r.json())
-      .then(data => {
-        if(data.status === "ok"){
-          mostrarPanel(data);
-        } else {
-          alert("Datos incorrectos");
-        }
-      });
-  }
-
-  function mostrarPanel(data){
-    let html = `<h3>${data.nombre}</h3>`;
-
-    html += "<h4>Notas</h4>";
-    data.notas.forEach(n=>{
-      html += `<p>${n.materia}: ${n.nota}</p>`;
-    });
-
-    html += "<h4>Disciplina</h4>";
-    data.disciplina.forEach(d=>{
-      html += `<p>${d.fecha}: ${d.detalle}</p>`;
-    });
-
-    document.getElementById("contenido").innerHTML = `
-      <div class="pantalla">
-        ${html}
-      </div>
-    `;
-  }
-
-});
-</script>
+<script src="app.js"></script>
 
 </body>
 </html>
