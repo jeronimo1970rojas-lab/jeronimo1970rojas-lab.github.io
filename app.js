@@ -39,15 +39,31 @@ document.addEventListener("DOMContentLoaded", function () {
           Avisos
         </h2>
 
-        <div id="lista">
+      <div id="lista" style="
+  overflow-y:auto;
+  height:calc(100vh - 140px);
+  padding-top:10px;
+">
           Cargando...
         </div>
 
-        <button
-  class="boton boton-fijo"
-  onclick="continuarApp()">
-  Continuar
-</button>
+       <div style="
+  position:sticky;
+  top:0;
+  background:#eef3f8;
+  padding:10px 0;
+  z-index:10;
+">
+
+  <button
+    class="boton"
+    onclick="continuarApp()">
+
+    Continuar
+
+  </button>
+
+</div>
 
       </div>
     `;
@@ -254,12 +270,17 @@ window.continuarApp = function () {
 
       </button>
 
-      <div style="
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:10px;
-        margin-bottom:20px;
-      ">
+     <div style="
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:20px;
+  position:sticky;
+  top:0;
+  background:#eef3f8;
+  padding:10px 0;
+  z-index:10;
+">
 
         <button
           class="boton"
@@ -279,7 +300,11 @@ window.continuarApp = function () {
 
       </div>
 
-      <div id="contenidoPanel"></div>
+      <div id="contenidoPanel" style="
+  overflow-y:auto;
+  max-height:calc(100vh - 320px);
+  padding-bottom:20px;
+"></div>
 
     </div>
   `;
