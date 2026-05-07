@@ -29,10 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
 
         <button
-          class="boton boton-fijo"
-          onclick="irLogin()">
-          Ingresar
-        </button>
+  class="boton boton-fijo"
+  onclick="continuarApp()">
+  Continuar
+</button>
 
       </div>
     `;
@@ -67,6 +67,51 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // LOGIN
+  // CONTINUAR
+window.continuarApp = function () {
+
+  let usuario =
+    localStorage.getItem(
+      "usuarioGuardado"
+    );
+
+  let password =
+    localStorage.getItem(
+      "passwordGuardado"
+    );
+
+  // SI YA INICIO SESION
+  if (usuario && password) {
+
+    fetch(
+      URL +
+      "?usuario=" + usuario +
+      "&password=" + password
+    )
+
+    .then(r => r.json())
+
+    .then(data => {
+
+      if (data.status == "ok") {
+
+        mostrarPanel(data);
+
+      } else {
+
+        irLogin();
+
+      }
+
+    });
+
+  } else {
+
+    irLogin();
+
+  }
+
+}
   window.irLogin = function () {
 
     document.getElementById("contenido").innerHTML = `
@@ -113,9 +158,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (data.status == "ok") {
 
-          mostrarPanel(data);
+  // GUARDAR SESION
+  localStorage.setItem(
+    "usuarioGuardado",
+    u
+  );
 
-        } else {
+  localStorage.setItem(
+    "passwordGuardado",
+    p
+  );
+
+  mostrarPanel(data);
+
+} else {
 
           alert("Datos incorrectos");
 
@@ -139,6 +195,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         <h2>
           ${data.nombre}
+          <button
+  class="boton"
+  onclick="cerrarSesion()"
+  style="margin-bottom:20px;">
+
+  Cerrar Sesión
+
+</button>
         </h2>
 
         <h3>Notas</h3>
@@ -173,5 +237,18 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("contenido").innerHTML = html;
 
   }
+// CERRAR SESION
+window.cerrarSesion = function () {
 
+  localStorage.removeItem(
+    "usuarioGuardado"
+  );
+
+  localStorage.removeItem(
+    "passwordGuardado"
+  );
+
+  location.reload();
+
+}
 });
