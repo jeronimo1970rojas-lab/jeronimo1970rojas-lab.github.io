@@ -132,7 +132,18 @@ window.continuarApp = function () {
     document.getElementById("contenido").innerHTML = `
       <div class="container">
 
-        <h2>Iniciar Sesión</h2>
+ <h2 style="text-align:center;">
+  Iniciar Sesión
+</h2>
+
+<img
+  src="logo.png"
+  class="logo"
+  style="
+    width:90px;
+    display:block;
+    margin:auto;
+  ">
 
         <input
           type="text"
@@ -208,17 +219,27 @@ window.continuarApp = function () {
     let html = `
       <div class="container">
 
-        <h2>
-          ${data.nombre}
-          <button
-  class="boton"
-  onclick="cerrarSesion()"
-  style="margin-bottom:20px;">
+       <div style="
+  background:linear-gradient(135deg,#1565c0,#42a5f5);
+  color:white;
+  padding:25px;
+  border-radius:0 0 25px 25px;
+  margin:-20px -20px 20px -20px;
+  text-align:center;
+">
 
-  Cerrar Sesión
+  <img
+    src="logo.png"
+    style="
+      width:70px;
+      margin-bottom:10px;
+    ">
 
-</button>
-        </h2>
+  <h2>
+    ${data.nombre}
+  </h2>
+
+</div>
 
         <h3>Notas</h3>
     `;
