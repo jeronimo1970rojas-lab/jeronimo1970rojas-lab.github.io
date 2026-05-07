@@ -215,7 +215,10 @@ window.continuarApp = function () {
 
   // PANEL
   function mostrarPanel(data) {
-
+window.notasActuales = data.notas;
+window.disciplinaActual = data.disciplina;
+    window.notasActuales = data.notas;
+window.disciplinaActual = data.disciplina;
     let html = `
       <div class="container">
 
@@ -241,7 +244,7 @@ window.continuarApp = function () {
 
 </div>
 
-    html += `
+   html += `
 
 <div style="
   display:grid;
@@ -252,7 +255,7 @@ window.continuarApp = function () {
 
   <button
     class="boton"
-    onclick='mostrarNotas(${JSON.stringify(data.notas)})'>
+    onclick="mostrarNotas()">
 
     📘 Notas
 
@@ -260,7 +263,7 @@ window.continuarApp = function () {
 
   <button
     class="boton"
-    onclick='mostrarDisciplina(${JSON.stringify(data.disciplina)})'>
+    onclick="mostrarDisciplina()">
 
     ⚠️ Disciplina
 
@@ -268,15 +271,13 @@ window.continuarApp = function () {
 
 </div>
 
-<div id="contenidoPanel">
-
-</div>
+<div id="contenidoPanel"></div>
 
 `;
-    html += `</div>`;
 
     document.getElementById("contenido").innerHTML = html;
-    mostrarNotas(data.notas);
+    mostrarNotas();
+    
 
   }
 // CERRAR SESION
@@ -291,6 +292,76 @@ window.cerrarSesion = function () {
   );
 
   location.reload();
+
+}
+// MOSTRAR NOTAS
+window.mostrarNotas = function(){
+
+  let notas = window.notasActuales;
+
+  let html = "";
+
+  notas.forEach(n => {
+
+    html += `
+      <div class="card">
+
+        <b>${n.materia}</b>
+
+        <br><br>
+
+        Nota: ${n.nota}
+
+      </div>
+    `;
+
+  });
+
+  document.getElementById(
+    "contenidoPanel"
+  ).innerHTML = html;
+
+}
+
+// MOSTRAR DISCIPLINA
+window.mostrarDisciplina = function(){
+
+  let disciplina =
+    window.disciplinaActual;
+
+  let html = "";
+
+  if(disciplina.length == 0){
+
+    html = `
+      <div class="card">
+        Sin registros disciplinarios
+      </div>
+    `;
+
+  } else {
+
+    disciplina.forEach(d => {
+
+      html += `
+        <div class="card">
+
+          <b>${d.fecha}</b>
+
+          <br><br>
+
+          ${d.detalle}
+
+        </div>
+      `;
+
+    });
+
+  }
+
+  document.getElementById(
+    "contenidoPanel"
+  ).innerHTML = html;
 
 }
 });
