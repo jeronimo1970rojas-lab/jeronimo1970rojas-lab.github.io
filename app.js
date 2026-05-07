@@ -230,91 +230,95 @@ window.continuarApp = function () {
   }
 
   // PANEL
- function mostrarPanel(data) {
+function mostrarPanel(data) {
 
-  // GUARDAR DATOS
   window.notasActuales = data.notas;
   window.disciplinaActual = data.disciplina;
+  window.nombreAlumno = data.nombre;
 
   let html = `
+
     <div class="container">
 
-      <div style="
-        background:linear-gradient(135deg,#1565c0,#42a5f5);
-        color:white;
-        padding:25px;
-        border-radius:0 0 25px 25px;
-        margin:-20px -20px 20px -20px;
-        text-align:center;
-      ">
+      <div class="topbar">
 
-        <img
-          src="logo.png"
-          style="
-            width:70px;
-            margin-bottom:10px;
-          ">
+        <div class="topbar-content">
 
-        <h2>
-          ${data.nombre}
-        </h2>
+          <div class="topbar-left">
+
+            <img
+              src="logo.png"
+              class="topbar-logo">
+
+            <div>
+              <h2>${data.nombre}</h2>
+              <p>PRE PROMO B</p>
+            </div>
+
+          </div>
+
+<button
+            onclick="cerrarSesion()"
+            style="
+              background:white;
+              border:none;
+              padding:10px 14px;
+              border-radius:12px;
+              color:#1565c0;
+              font-weight:bold;
+            ">
+            Salir
+          </button>
+
+        </div>
 
       </div>
 
-      <button
-        class="boton"
-        onclick="cerrarSesion()"
-        style="margin-bottom:20px;">
+      <div
+        id="contenidoPanel"
+        style="padding-top:10px;">
+      </div>
 
-        Cerrar Sesión
+    </div>
+
+    <div class="bottom-nav">
+
+      <button
+        class="nav-btn"
+        onclick="mostrarInicio()">
+
+        <span class="nav-icon">🏠</span>
+        Inicio
 
       </button>
 
-     <div style="
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-bottom:20px;
-  position:sticky;
-  top:0;
-  background:#eef3f8;
-  padding:10px 0;
-  z-index:10;
-">
+      <button
+        class="nav-btn"
+        onclick="mostrarNotas()">
 
-        <button
-          class="boton"
-          onclick="mostrarNotas()">
+        <span class="nav-icon">📘</span>
+        Notas
 
-          📘 Notas
+      </button>
 
-        </button>
+      <button
+        class="nav-btn"
+        onclick="mostrarDisciplina()">
 
-        <button
-          class="boton"
-          onclick="mostrarDisciplina()">
+        <span class="nav-icon">⚠️</span>
+        Disciplina
 
-          ⚠️ Disciplina
-
-        </button>
-
-      </div>
-
-      <div id="contenidoPanel" style="
-  overflow-y:auto;
-  max-height:calc(100vh - 320px);
-  padding-bottom:20px;
-"></div>
+      </button>
 
     </div>
+
   `;
 
   document.getElementById(
     "contenido"
   ).innerHTML = html;
 
-  // MOSTRAR NOTAS AL INICIO
-  mostrarNotas();
+  mostrarInicio();
 
 }
 // CERRAR SESION
@@ -340,16 +344,27 @@ window.mostrarNotas = function(){
 
   notas.forEach(n => {
 
+    let clase = "nota-verde";
+
+    if(n.nota < 51){
+      clase = "nota-roja";
+    }
+    else if(n.nota < 70){
+      clase = "nota-amarilla";
+    }
+
     html += `
-      <div class="card">
 
-        <b>${n.materia}</b>
+      <div class="card ${clase}">
 
-        <br><br>
+        <div class="card-title">
+          📘 ${n.materia}
+        </div>
 
         Nota: ${n.nota}
 
       </div>
+
     `;
 
   });
@@ -359,7 +374,6 @@ window.mostrarNotas = function(){
   ).innerHTML = html;
 
 }
-
 // MOSTRAR DISCIPLINA
 window.mostrarDisciplina = function(){
 
@@ -372,7 +386,13 @@ window.mostrarDisciplina = function(){
 
     html = `
       <div class="card">
+
+        <div class="card-title">
+          ✅ Excelente
+        </div>
+
         Sin registros disciplinarios
+
       </div>
     `;
 
@@ -381,15 +401,17 @@ window.mostrarDisciplina = function(){
     disciplina.forEach(d => {
 
       html += `
+
         <div class="card">
 
-          <b>${d.fecha}</b>
-
-          <br><br>
+          <div class="card-title">
+            ⚠️ ${d.fecha}
+          </div>
 
           ${d.detalle}
 
         </div>
+
       `;
 
     });
@@ -399,6 +421,57 @@ window.mostrarDisciplina = function(){
   document.getElementById(
     "contenidoPanel"
   ).innerHTML = html;
+
+}
+  window.mostrarInicio = function(){
+
+  let promedio = 0;
+
+  if(window.notasActuales.length > 0){
+
+    window.notasActuales.forEach(n => {
+      promedio += Number(n.nota);
+    });
+
+    promedio = (
+      promedio /
+      window.notasActuales.length
+    ).toFixed(1);
+
+  }
+
+  document.getElementById(
+    "contenidoPanel"
+  ).innerHTML = `
+
+    <div class="card">
+
+      <div class="card-title">
+        👋 Bienvenido
+      </div>
+      
+      ${window.nombreAlumno}
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-title">
+        ⭐ Promedio General
+      </div>
+
+      <div style="
+        font-size:42px;
+        font-weight:bold;
+        color:#1565c0;
+        text-align:center;
+      ">
+        ${promedio}
+      </div>
+
+    </div>
+
+  `;
 
 }
 });
