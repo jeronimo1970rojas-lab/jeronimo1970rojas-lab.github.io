@@ -5,11 +5,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // PANTALLA INICIAL
   document.getElementById("contenido").innerHTML = `
-    <div class="pantalla azul">
-      <h1>PRE PROMO B</h1>
-      <p>Bienvenido</p>
-    </div>
-  `;
+  <div class="pantalla azul">
+
+    <img src="logo.png" class="logo">
+
+    <h1 class="titulo">
+      PRE PROMO B
+    </h1>
+
+    <p class="subtitulo">
+      Colegio Bautista Santa Cruz
+    </p>
+
+    <img src="profesor.jpg" class="profesor">
+
+    <p style="margin-top:25px;">
+      Bienvenidos al Sistema Académico
+    </p>
+
+  </div>
+`;
 
   // IR A AVISOS
   setTimeout(cargarAvisos, 3000);
