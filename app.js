@@ -78,8 +78,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
           html += `
             <div class="card">
-              <b>${a.fecha}</b><br><br>
-              ${a.mensaje}
+              <b>${a.mensaje}</b><br><br>
+              ${a.fecha}
             </div>
           `;
 
