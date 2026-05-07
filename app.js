@@ -33,26 +33,32 @@ document.addEventListener("DOMContentLoaded", function () {
   function cargarAvisos() {
 
     document.getElementById("contenido").innerHTML = `
-      <div class="container">
+<div class="container" style="
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+">
 
         <h2 style="text-align:center;">
           Avisos
         </h2>
 
       <div id="lista" style="
+  flex:1;
   overflow-y:auto;
-  height:calc(100vh - 140px);
-  padding-top:10px;
+  padding-bottom:20px;
 ">
           Cargando...
         </div>
 
-       <div style="
+      <div style="
   position:sticky;
   top:0;
+  z-index:100;
   background:#eef3f8;
-  padding:10px 0;
-  z-index:10;
+  padding:15px;
+  flex-shrink:0;
 ">
 
   <button
@@ -64,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
   </button>
 
 </div>
-
       </div>
     `;
 
