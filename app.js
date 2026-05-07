@@ -214,72 +214,84 @@ window.continuarApp = function () {
   }
 
   // PANEL
-  function mostrarPanel(data) {
-window.notasActuales = data.notas;
-window.disciplinaActual = data.disciplina;
-    window.notasActuales = data.notas;
-window.disciplinaActual = data.disciplina;
-    let html = `
-      <div class="container">
+ function mostrarPanel(data) {
 
-       <div style="
-  background:linear-gradient(135deg,#1565c0,#42a5f5);
-  color:white;
-  padding:25px;
-  border-radius:0 0 25px 25px;
-  margin:-20px -20px 20px -20px;
-  text-align:center;
-">
+  // GUARDAR DATOS
+  window.notasActuales = data.notas;
+  window.disciplinaActual = data.disciplina;
 
-  <img
-    src="logo.png"
-    style="
-      width:70px;
-      margin-bottom:10px;
-    ">
+  let html = `
+    <div class="container">
 
-  <h2>
-    ${data.nombre}
-  </h2>
+      <div style="
+        background:linear-gradient(135deg,#1565c0,#42a5f5);
+        color:white;
+        padding:25px;
+        border-radius:0 0 25px 25px;
+        margin:-20px -20px 20px -20px;
+        text-align:center;
+      ">
 
-</div>
+        <img
+          src="logo.png"
+          style="
+            width:70px;
+            margin-bottom:10px;
+          ">
 
-   html += `
+        <h2>
+          ${data.nombre}
+        </h2>
 
-<div style="
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-bottom:20px;
-">
+      </div>
 
-  <button
-    class="boton"
-    onclick="mostrarNotas()">
+      <button
+        class="boton"
+        onclick="cerrarSesion()"
+        style="margin-bottom:20px;">
 
-    📘 Notas
+        Cerrar Sesión
 
-  </button>
+      </button>
 
-  <button
-    class="boton"
-    onclick="mostrarDisciplina()">
+      <div style="
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+        margin-bottom:20px;
+      ">
 
-    ⚠️ Disciplina
+        <button
+          class="boton"
+          onclick="mostrarNotas()">
 
-  </button>
+          📘 Notas
 
-</div>
+        </button>
 
-<div id="contenidoPanel"></div>
+        <button
+          class="boton"
+          onclick="mostrarDisciplina()">
 
-`;
+          ⚠️ Disciplina
 
-    document.getElementById("contenido").innerHTML = html;
-    mostrarNotas();
-    
+        </button>
 
-  }
+      </div>
+
+      <div id="contenidoPanel"></div>
+
+    </div>
+  `;
+
+  document.getElementById(
+    "contenido"
+  ).innerHTML = html;
+
+  // MOSTRAR NOTAS AL INICIO
+  mostrarNotas();
+
+}
 // CERRAR SESION
 window.cerrarSesion = function () {
 
