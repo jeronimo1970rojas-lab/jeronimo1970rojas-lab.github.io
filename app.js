@@ -241,36 +241,42 @@ window.continuarApp = function () {
 
 </div>
 
-        <h3>Notas</h3>
-    `;
+    html += `
 
-    data.notas.forEach(n => {
+<div style="
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:20px;
+">
 
-      html += `
-        <div class="card">
-          <b>${n.materia}</b><br>
-          Nota: ${n.nota}
-        </div>
-      `;
+  <button
+    class="boton"
+    onclick='mostrarNotas(${JSON.stringify(data.notas)})'>
 
-    });
+    📘 Notas
 
-    html += `<h3>Disciplina</h3>`;
+  </button>
 
-    data.disciplina.forEach(d => {
+  <button
+    class="boton"
+    onclick='mostrarDisciplina(${JSON.stringify(data.disciplina)})'>
 
-      html += `
-        <div class="card">
-          <b>${d.fecha}</b><br>
-          ${d.detalle}
-        </div>
-      `;
+    ⚠️ Disciplina
 
-    });
+  </button>
 
+</div>
+
+<div id="contenidoPanel">
+
+</div>
+
+`;
     html += `</div>`;
 
     document.getElementById("contenido").innerHTML = html;
+    mostrarNotas(data.notas);
 
   }
 // CERRAR SESION
