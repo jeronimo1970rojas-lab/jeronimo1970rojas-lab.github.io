@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     </h1>
 
     <p class="subtitulo">
-      Colegio Bautista Santa Cruz
+      COLEGIO BRITANICO SANTA CRUZ
     </p>
 
     <img src="profesor.jpg" class="profesor">
