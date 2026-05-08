@@ -254,7 +254,15 @@ function mostrarPanel(data) {
             <img
               src="logo.png"
               class="topbar-logo">
-
+<img
+  src="${data.foto}"
+  style="
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid white;
+  ">
             <div>
               <h2>${data.nombre}</h2>
               <p>PRE PROMO B</p>
