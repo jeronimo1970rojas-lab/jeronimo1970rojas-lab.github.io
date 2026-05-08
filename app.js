@@ -255,13 +255,18 @@ function mostrarPanel(data) {
               src="logo.png"
               class="topbar-logo">
 <img
-src="${data.foto}"
+  src="${data.foto.trim()}"
   style="
     width:55px;
     height:55px;
     border-radius:50%;
     object-fit:cover;
     border:3px solid white;
+    background:white;
+  "
+  onerror="
+    console.log('ERROR FOTO');
+    this.src='logo.png';
   ">
             <div>
               <h2>${data.nombre}</h2>
