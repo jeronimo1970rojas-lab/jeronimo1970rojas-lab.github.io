@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
   top:0;
   z-index:100;
   background:#eef3f8;
- padding:55px;
+ padding:15px;
   flex-shrink:0;
 ">
 
