@@ -255,7 +255,7 @@ function mostrarPanel(data) {
               src="logo.png"
               class="topbar-logo">
 <img
-  src="${data.foto}"
+ src="logo.png"
   style="
     width:55px;
     height:55px;
