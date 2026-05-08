@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <div id="lista" style="
   flex:1;
   overflow-y:auto;
-  padding-bottom:20px;
+  padding-bottom:25px;
 ">
           Cargando...
         </div>
