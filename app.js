@@ -255,7 +255,7 @@ function mostrarPanel(data) {
               src="logo.png"
               class="topbar-logo">
 <img
-  src="https://jeronimo1970rojas-lab.github.io/6bascope.jpg"
+  src="https://jeronimo1970rojas-lab.github.io/1.jpg"
   style="
     width:55px;
     height:55px;
