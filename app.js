@@ -255,7 +255,7 @@ function mostrarPanel(data) {
               src="logo.png"
               class="topbar-logo">
 <img
-  src="https://jeronimo1970rojas-lab.github.io/${data.usuario}.jpg"
+  src="https://jeronimo1970rojas-lab.github.io/6bascope.jpg"
   style="
     width:55px;
     height:55px;
@@ -263,7 +263,7 @@ function mostrarPanel(data) {
     object-fit:cover;
     border:3px solid white;
      "
-  onerror="this.src='6bascope.jpg'">
+  onerror="this.src='logo.png'">
             <div>
               <h2>${data.nombre}</h2>
               <p>PRE PROMO B</p>
