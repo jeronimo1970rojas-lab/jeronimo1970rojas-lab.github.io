@@ -255,19 +255,15 @@ function mostrarPanel(data) {
               src="logo.png"
               class="topbar-logo">
 <img
-src="${data.foto ? data.foto.trim() : 'logo.png'}"
+  src="https://jeronimo1970rojas-lab.github.io/${data.usuario}.jpg"
   style="
     width:55px;
     height:55px;
     border-radius:50%;
     object-fit:cover;
     border:3px solid white;
-    background:white;
   "
-  onerror="
-    console.log('ERROR FOTO');
-    this.src='logo.png';
-  ">
+  onerror="this.src='logo.png'">
             <div>
               <h2>${data.nombre}</h2>
               <p>PRE PROMO B</p>
