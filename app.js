@@ -262,8 +262,7 @@ function mostrarPanel(data) {
     border-radius:50%;
     object-fit:cover;
     border:3px solid white;
-  "
-  onerror="this.src='logo.png'">
+  ">
             <div>
               <h2>${data.nombre}</h2>
               <p>PRE PROMO B</p>
