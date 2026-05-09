@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
 ">
 
         <h2 style="text-align:center;">
-          Avisos
+          A V I S O S
         </h2>
 
       <div id="lista" style="
