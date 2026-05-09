@@ -240,6 +240,7 @@ function mostrarPanel(data) {
   window.notasActuales = data.notas;
   window.disciplinaActual = data.disciplina;
   window.nombreAlumno = data.nombre;
+  console.log(data.usuario);
 
   let html = `
 
