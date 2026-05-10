@@ -47,7 +47,7 @@ Jerónimo Rojas Gutierrez
       <div id="lista" style="
   flex:1;
   overflow-y:auto;
-  padding-bottom:35px;
+  padding-bottom:15px;
 ">
           Cargando...
         </div>
