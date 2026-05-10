@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <img src="logo.png" class="logo">
 
     <h1 class="titulo">
-      PRE PROMO B
+      PRE-PROMO Paralelo "B"
     </h1>
 
     <p class="subtitulo">
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     </p>
 
     <img src="profesor.jpg" class="profesor">
-
+Jerónimo Rojas Gutierrez
     <p style="margin-top:25px;">
       Bienvenidos al Sistema Académico
     </p>
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <div id="lista" style="
   flex:1;
   overflow-y:auto;
-  padding-bottom:25px;
+  padding-bottom:35px;
 ">
           Cargando...
         </div>
@@ -267,7 +267,7 @@ function mostrarPanel(data) {
   onerror="this.src='logo.png'">
             <div>
               <h2>${data.nombre}</h2>
-              <p>PRE PROMO B</p>
+              <p>PRE-PROMO "B"</p>
             </div>
 
           </div>
@@ -462,7 +462,7 @@ window.mostrarDisciplina = function(){
     <div class="card">
 
       <div class="card-title">
-        👋 Bienvenido
+        👋 BIENVENID@
       </div>
       
       ${window.nombreAlumno}
@@ -472,7 +472,7 @@ window.mostrarDisciplina = function(){
     <div class="card">
 
       <div class="card-title">
-        ⭐ Promedio General
+        ⭐ PROMEDIO GENERAL DEL TRIMESTRE 
       </div>
 
       <div style="
